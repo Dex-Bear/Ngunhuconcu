@@ -1,0 +1,155 @@
+local Webhook = (loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/Ngunhuconcu/refs/heads/main/Webhook")))();
+if game.PlaceId == 2753915549 then
+	World1 = true;
+elseif game.PlaceId == 4442272183 then
+	World2 = true;
+elseif game.PlaceId == 7449423635 then
+	World3 = true;
+end;
+local SendMirage = false;
+spawn(function()
+	while wait(0.2) do
+		if World2 or World3 then
+			if game.Workspace._WorldOrigin.Locations:FindFirstChild("Mirage Island") and (not SendMirage) then
+				local Config = {
+					URL = "https://discord.com/api/webhooks/1354018474476703816/tCkRqrFnMPBqlKZVYc2IkiSP8ts5goWgG1GJ422tKfotyaDVAE3R2ikx8VHeDJ-gF94T",
+					Title = "Mirage Island Finder",
+					Description = "Make sure it matches the sea listed!",
+					Content = {
+						{
+							Name = "[🏝️] Mirage Island Status",
+							Value = "✔️ Spawn",
+							Inline = false
+						}
+					}
+				};
+				Webhook:Send(Config);
+				SendMirage = true;
+			end;
+		end;
+	end;
+end);
+local SendKitsune = false;
+spawn(function()
+	while wait(0.2) do
+		if World3 then
+			if game.Workspace._WorldOrigin.Locations:FindFirstChild("Kitsune Island") and (not SendKitsune) then
+				local Config = {
+					URL = "https://discord.com/api/webhooks/1354018477828210788/2VNzzC5fY4zFB291hfDjfLAip541-zcNxF-H0IJNAp6a6nUBf9mKxu6TnjRPSPPrG4o9",
+					Title = "Kitsune Island Finder",
+					Description = "Make sure it matches the sea listed!",
+					Content = {
+						{
+							Name = "[â›©ï¸] Kitsune Island Status",
+							Value = "ðŸŸ¢ Spawn",
+							Inline = false
+						}
+					}
+				};
+				Webhook:Send(Config);
+				SendKitsune = true;
+			end;
+		end;
+	end;
+end);
+local SendPrehistoric = false;
+spawn(function()
+	while wait(0.2) do
+		if World3 then
+			if game.Workspace._WorldOrigin.Locations:FindFirstChild("Prehistoric Island") and (not SendPrehistoric) then
+				local Config = {
+					URL = "https://discord.com/api/webhooks/1354018474476703816/tCkRqrFnMPBqlKZVYc2IkiSP8ts5goWgG1GJ422tKfotyaDVAE3R2ikx8VHeDJ-gF94T",
+					Title = "Prehistoric Island Finder",
+					Description = "Make sure it matches the sea listed!",
+					Content = {
+						{
+							Name = "[ðŸ¦´] Prehistoric Island Status",
+							Value = "ðŸŸ¢ Spawn",
+							Inline = false
+						}
+					}
+				};
+				Webhook:Send(Config);
+				SendPrehistoric = true;
+			end;
+		end;
+	end;
+end);
+function getFullMoon()
+	if (game:GetService("Lighting")).Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149431" then
+		return "Progress 100%";
+	elseif (game:GetService("Lighting")).Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149052" then
+		return "Progress 75%";
+	else
+		return false;
+	end;
+end;
+local SendFullMoon = false;
+spawn(function()
+	while wait(0.2) do
+		if World3 then
+			if getFullMoon() and (not SendFullMoon) then
+				local Config = {
+					URL = "https://discord.com/api/webhooks/1354018474476703816/tCkRqrFnMPBqlKZVYc2IkiSP8ts5goWgG1GJ422tKfotyaDVAE3R2ikx8VHeDJ-gF94T",
+					Title = "Full Moon Finder",
+					Description = "Make sure it matches the sea listed!",
+					Content = {
+						{
+							Name = "[ðŸŒ•] Full Moon",
+							Value = "" .. getFullMoon() .. "",
+							Inline = false
+						}
+					}
+				};
+				Webhook:Send(Config);
+				SendFullMoon = true;
+			end;
+		end;
+	end;
+end);
+local SendRipIndra = false;
+spawn(function()
+	while wait(0.2) do
+		if World3 then
+			if (game:GetService("Workspace")).Enemies:FindFirstChild("rip_indra") and (not SendRipIndra) then
+				local Config = {
+					URL = "https://discord.com/api/webhooks/1354018474476703816/tCkRqrFnMPBqlKZVYc2IkiSP8ts5goWgG1GJ422tKfotyaDVAE3R2ikx8VHeDJ-gF94T",
+					Title = "Rip Indra Finder",
+					Description = "Make sure it matches the sea listed!",
+					Content = {
+						{
+							Name = "[ðŸ’€] Rip Indra Status",
+							Value = "ðŸŸ¢ Spawn",
+							Inline = false
+						}
+					}
+				};
+				Webhook:Send(Config);
+				SendRipIndra = true;
+			end;
+		end;
+	end;
+end);
+local SendDoughKing = false;
+spawn(function()
+	while wait(0.2) do
+		if World3 then
+			if (game:GetService("Workspace")).Enemies:FindFirstChild("Dough King") and (not SendDoughKing) then
+				local Config = {
+					URL = "https://discord.com/api/webhooks/1354018474476703816/tCkRqrFnMPBqlKZVYc2IkiSP8ts5goWgG1GJ422tKfotyaDVAE3R2ikx8VHeDJ-gF94T",
+					Title = "Dough King Finder",
+					Description = "Make sure it matches the sea listed!",
+					Content = {
+						{
+							Name = "[ðŸ©] Dough King Status",
+							Value = "ðŸŸ¢ Spawn",
+							Inline = false
+						}
+					}
+				};
+				Webhook:Send(Config);
+				SendDoughKing = true;
+			end;
+		end;
+	end;
+end);
