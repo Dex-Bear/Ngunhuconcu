@@ -40,8 +40,8 @@ spawn(function()
 					Description = "Make sure it matches the sea listed!",
 					Content = {
 						{
-							Name = "[â›©ï¸] Kitsune Island Status",
-							Value = "ðŸŸ¢ Spawn",
+							Name = "[🦊] Kitsune Island Status",
+							Value = "✔️ Spawn",
 							Inline = false
 						}
 					}
@@ -63,8 +63,8 @@ spawn(function()
 					Description = "Make sure it matches the sea listed!",
 					Content = {
 						{
-							Name = "[ðŸ¦´] Prehistoric Island Status",
-							Value = "ðŸŸ¢ Spawn",
+							Name = "[🌋] Prehistoric Island Status",
+							Value = "✔️ Spawn",
 							Inline = false
 						}
 					}
@@ -95,7 +95,7 @@ spawn(function()
 					Description = "Make sure it matches the sea listed!",
 					Content = {
 						{
-							Name = "[ðŸŒ•] Full Moon",
+							Name = "[🌕] Full Moon",
 							Value = "" .. getFullMoon() .. "",
 							Inline = false
 						}
@@ -118,8 +118,8 @@ spawn(function()
 					Description = "Make sure it matches the sea listed!",
 					Content = {
 						{
-							Name = "[ðŸ’€] Rip Indra Status",
-							Value = "ðŸŸ¢ Spawn",
+							Name = "[✨] Rip Indra Status",
+							Value = "✔️ Spawn",
 							Inline = false
 						}
 					}
@@ -141,8 +141,8 @@ spawn(function()
 					Description = "Make sure it matches the sea listed!",
 					Content = {
 						{
-							Name = "[ðŸ©] Dough King Status",
-							Value = "ðŸŸ¢ Spawn",
+							Name = "[🍩] Dough King Status",
+							Value = "✔️ Spawn",
 							Inline = false
 						}
 					}
