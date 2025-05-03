@@ -35,7 +35,7 @@ spawn(function()
 		if World3 then
 			if game.Workspace._WorldOrigin.Locations:FindFirstChild("Kitsune Island") and (not SendKitsune) then
 				local Config = {
-					URL = "https://discord.com/api/webhooks/1354018477828210788/2VNzzC5fY4zFB291hfDjfLAip541-zcNxF-H0IJNAp6a6nUBf9mKxu6TnjRPSPPrG4o9",
+					URL = "https://discord.com/api/webhooks/1368177249412710401/04e-PF7XZKfyIVu7uaJfwSR-UILSSVK5ne9978ahOzIMPwc3OfZPaZhKpoRC9iPVbz2e",
 					Title = "Kitsune Island Finder",
 					Description = "Make sure it matches the sea listed!",
 					Content = {
@@ -58,7 +58,7 @@ spawn(function()
 		if World3 then
 			if game.Workspace._WorldOrigin.Locations:FindFirstChild("Prehistoric Island") and (not SendPrehistoric) then
 				local Config = {
-					URL = "https://discord.com/api/webhooks/1354018474476703816/tCkRqrFnMPBqlKZVYc2IkiSP8ts5goWgG1GJ422tKfotyaDVAE3R2ikx8VHeDJ-gF94T",
+					URL = "https://discord.com/api/webhooks/1354018477828210788/2VNzzC5fY4zFB291hfDjfLAip541-zcNxF-H0IJNAp6a6nUBf9mKxu6TnjRPSPPrG4o9",
 					Title = "Prehistoric Island Finder",
 					Description = "Make sure it matches the sea listed!",
 					Content = {
@@ -90,7 +90,7 @@ spawn(function()
 		if World3 then
 			if getFullMoon() and (not SendFullMoon) then
 				local Config = {
-					URL = "https://discord.com/api/webhooks/1354018474476703816/tCkRqrFnMPBqlKZVYc2IkiSP8ts5goWgG1GJ422tKfotyaDVAE3R2ikx8VHeDJ-gF94T",
+					URL = "https://discord.com/api/webhooks/1368177249362120755/GVzK3UHUk461EwTGnW-19-H7Q0XW_x16rFKpnnhTV3IwxsHBQ_IKnIA_-8AocleLDjwN",
 					Title = "Full Moon Finder",
 					Description = "Make sure it matches the sea listed!",
 					Content = {
@@ -111,9 +111,9 @@ local SendRipIndra = false;
 spawn(function()
 	while wait(0.2) do
 		if World3 then
-			if (game:GetService("Workspace")).Enemies:FindFirstChild("rip_indra") and (not SendRipIndra) then
+			if (game:GetService("Workspace")).Enemies:FindFirstChild("rip_indra True Form") and (not SendRipIndra) then
 				local Config = {
-					URL = "https://discord.com/api/webhooks/1354018474476703816/tCkRqrFnMPBqlKZVYc2IkiSP8ts5goWgG1GJ422tKfotyaDVAE3R2ikx8VHeDJ-gF94T",
+					URL = "https://discord.com/api/webhooks/1368177248229654528/bt7YqtKcNSTdURuA0EFWdAKkEmk-fM3aXrahBw65ujZtTQ0AwDyfsEYXRUqEcd6ce_rj",
 					Title = "Rip Indra Finder",
 					Description = "Make sure it matches the sea listed!",
 					Content = {
@@ -136,7 +136,7 @@ spawn(function()
 		if World3 then
 			if (game:GetService("Workspace")).Enemies:FindFirstChild("Dough King") and (not SendDoughKing) then
 				local Config = {
-					URL = "https://discord.com/api/webhooks/1354018474476703816/tCkRqrFnMPBqlKZVYc2IkiSP8ts5goWgG1GJ422tKfotyaDVAE3R2ikx8VHeDJ-gF94T",
+					URL = "https://discord.com/api/webhooks/1368177247969607762/-K21gr1lT6OaG5j9NkUo_-6Imqy0bwnAs-OPoTC3vX8TrHz7GW9dGojnky1BDt5A5AYU",
 					Title = "Dough King Finder",
 					Description = "Make sure it matches the sea listed!",
 					Content = {
@@ -149,6 +149,52 @@ spawn(function()
 				};
 				Webhook:Send(Config);
 				SendDoughKing = true;
+			end;
+		end;
+	end;
+end);
+local SendTots = false;
+spawn(function()
+	while wait(0.2) do
+		if World3 then
+			if (game:GetService("Workspace")).Enemies:FindFirstChild("Tyrant of the Skies") and (not SendTots) then
+				local Config = {
+					URL = "https://discord.com/api/webhooks/1368177247730663484/hKje944hPdHaehjKYDThRVOi7UnVFhjSzQQPsJqREyYpwzq7QtchbIpjRn818M5JZ0Ha",
+					Title = "Tyrant of the Skies Finder",
+					Description = "Make sure it matches the sea listed!",
+					Content = {
+						{
+							Name = "[🦅] Tyrant of the Skies Status",
+							Value = "✔️ Spawn",
+							Inline = false
+						}
+					}
+				};
+				Webhook:Send(Config);
+				SendTots = true;
+			end;
+		end;
+	end;
+end);
+local SendDarkBeard = false;
+spawn(function()
+	while wait(0.2) do
+		if World2 then
+			if (game:GetService("Workspace")).Enemies:FindFirstChild("Dark Beard") and (not SendDarkBeard) then
+				local Config = {
+					URL = "https://discord.com/api/webhooks/1368177247156174850/4AB4wWnAu_1TU0BrAUxxj_GkJc7GtOCPQ__JOnBJ4-7sczxx-0dr3Q0yjcViBiISf4Gs",
+					Title = "Dark Beard Finder",
+					Description = "Make sure it matches the sea listed!",
+					Content = {
+						{
+							Name = "[🎩] Dark Beard Status",
+							Value = "✔️ Spawn",
+							Inline = false
+						}
+					}
+				};
+				Webhook:Send(Config);
+				SendDarkBeard = true;
 			end;
 		end;
 	end;
