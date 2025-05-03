@@ -19,12 +19,12 @@ function Webhook:Send(Config)
 	};
 	local fields = {
 		{
-			name = "[ðŸ‘¤] Players",
+			name = "[👥] Players",
 			value = "```" .. #PlayerInServer .. " / 12" .. "```",
 			inline = true
 		},
 		{
-			name = "[ðŸŒ] World",
+			name = "[🌎] World",
 			value = "```" .. World .. "```",
 			inline = true
 		}
@@ -37,11 +37,11 @@ function Webhook:Send(Config)
 		});
 	end;
 	table.insert(fields, {
-		name = "[ðŸ”—] Job Id",
+		name = "[🪐] Job Id",
 		value = "```" .. game.JobId .. "```"
 	});
 	table.insert(fields, {
-		name = "[ðŸ“‚] Script",
+		name = "[🗒️“‚] Script",
 		value = "```" .. "game:GetService(\"ReplicatedStorage\").__ServerBrowser:InvokeServer(\"teleport\", \"" .. game.JobId .. "\")" .. "```"
 	});
 	local response = request({
