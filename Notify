@@ -12,7 +12,7 @@ spawn(function()
 		if World2 or World3 then
 			if game.Workspace._WorldOrigin.Locations:FindFirstChild("Mirage Island") and (not SendMirage) then
 				local Config = {
-					URL = "https://discord.com/api/webhooks/1354018474476703816/tCkRqrFnMPBqlKZVYc2IkiSP8ts5goWgG1GJ422tKfotyaDVAE3R2ikx8VHeDJ-gF94T",
+					URL = "https://discord.com/api/webhooks/1368177232794615878/4EOSdC97ANXek0KjyW0wV_tDpbkv_nhzOk5h98c4bWsvgA32Tb2XEFKcrQdME96J4DGc",
 					Title = "Mirage Island Finder",
 					Description = "Make sure it matches the sea listed!",
 					Content = {
