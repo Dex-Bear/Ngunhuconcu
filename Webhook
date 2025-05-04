@@ -20,7 +20,7 @@ function Webhook:Send(Config)
 	local fields = {
 		{
 			name = "[👥] Players",
-			value = "```" .. #PlayerInServer .. " / 12" .. "```",
+			value = "```" .. #PlayerInServer .. "/12" .. "```",
 			inline = true
 		},
 		{
