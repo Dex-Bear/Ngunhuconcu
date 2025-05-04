@@ -1,0 +1,271 @@
+getgenv().Team = "Marines"
+getgenv().Rejoin = true
+getgenv().Boostfps = true
+
+
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/Ngunhuconcu/refs/heads/main/Notify"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xSync-gg/VisionX/refs/heads/main/Notify.lua"))()
+
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+if not player.Team then
+    if getgenv().Team == "Marines" then
+        ReplicatedStorage.Remotes.CommF_:InvokeServer("SetTeam", "Marines")
+    elseif getgenv().Team == "Pirates" then
+        ReplicatedStorage.Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
+    end
+    repeat
+        task.wait()
+        local chooseTeam = playerGui:FindFirstChild("ChooseTeam", true)
+        local uiController = playerGui:FindFirstChild("UIController", true)
+        if chooseTeam and chooseTeam.Visible and uiController then
+            for _, v in pairs(getgc(true)) do
+                if type(v) == "function" and getfenv(v).script == uiController then
+                    local constant = getconstants(v)
+                    pcall(function()
+                        if (constant[1] == "Pirates" or constant[1] == "Marines") and #constant == 1 then
+                            if constant[1] == getgenv().Team then
+                                v(getgenv().Team)
+                            end
+                        end
+                    end)
+                end
+            end
+        end
+    until player.Team
+end   
+local placeId = game.PlaceId
+local worldMap = {
+    [2753915549] = true,
+    [4442272183] = true,
+    [7449423635] = true
+}
+if worldMap[placeId] then
+    if placeId == 2753915549 then
+        World1 = true
+    elseif placeId == 4442272183 then
+        World2 = true
+    elseif placeId == 7449423635 then
+        World3 = true
+    end
+repeat
+    wait()
+until player.Character
+spawn(function()
+    while wait() do
+        if getgenv().Boostfps then
+            if game.Players.LocalPlayer.Character:FindFirstChild("Pants") then
+                game.Players.LocalPlayer.Character.Pants:Destroy()
+            end
+
+            game.Players.LocalPlayer.Character.Animate.Disabled = true
+
+            wait()
+
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/JewhisKids/NewFreeScript/main/Misc/SuperFpsBoost.lua"))()
+
+            setfpscap(59)
+        end
+    end
+end)
+local Time = Instance.new("ScreenGui")
+local Time1 = Instance.new("Frame")
+local UICorner214 = Instance.new("UICorner")
+local Texttime = Instance.new("TextLabel")
+local Frame = Instance.new("UIStroke")
+Time.Name = "Time"
+Time.Parent = game.CoreGui
+Time.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Time1.Name = "Time1"
+Time1.Parent = Time
+Time1.AnchorPoint = Vector2.new(0.53, 0.5)
+Time1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Time1.BorderSizePixel = 0
+Time1.Position = UDim2.new(0.72, 0, -0.12, 0)
+Time1.Size = UDim2.new(0, 335, 0, 22)
+UICorner214.CornerRadius = UDim.new(0, 4)
+UICorner214.Parent = Time1
+Frame.Thickness = 1
+Frame.Name = ""
+Frame.Parent = Time1
+Frame.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Frame.LineJoinMode = Enum.LineJoinMode.Round
+Frame.Color = Color3.fromRGB(255, 255, 255)
+Frame.Transparency = 0
+Texttime.Name = "Texttime"
+Texttime.Parent = Time1
+Texttime.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Texttime.BackgroundTransparency = 1
+Texttime.Position = UDim2.new(0, 0, 0, 0)
+Texttime.Size = UDim2.new(1, 0, 1, 0)
+Texttime.Font = Enum.Font.Ubuntu
+Texttime.Text = ""
+Texttime.TextColor3 = Color3.fromRGB(255, 255, 255)
+Texttime.TextSize = 12
+Texttime.TextXAlignment = Enum.TextXAlignment.Center
+spawn(function()
+    while wait(0.1) do
+        pcall(function()
+            local scripttime = game.Workspace.DistributedGameTime
+            local seconds = scripttime % 60
+            local minutes = math.floor(scripttime / 60 % 60)
+            local hours = math.floor(scripttime / 3600)
+            local fps = string.format("FPS: %d", workspace:GetRealPhysicsFPS())
+            local tempo = string.format(" |  %.0f Hour's , %.0f Minute , %.0f Second", hours, minutes, seconds)
+            Texttime.Text = string.format("Vxeze Hub-Notify | %s %s", fps, tempo)
+        end)
+    end
+end)
+spawn(function()
+    while wait() do
+        if getgenv().Rejoin then
+            if not getgenv().rejoin then 
+                getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+                    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+                        game:GetService("TeleportService"):Teleport(game.PlaceId)
+                    end
+                end)
+            end
+        end
+    end
+end)
+
+function Hop()
+    local PlaceID = game.PlaceId
+    local AllIDs = {}
+    local foundAnything = ""
+    local actualHour = os.date("!*t").hour
+    local Deleted = false
+    function TPReturner()
+        local Site;
+        if foundAnything=="" then
+            Site=game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+        else
+            Site=game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+        end
+        local ID = ""
+        if Site.nextPageCursor and Site.nextPageCursor ~="null" and Site.nextPageCursor ~=nil then
+            foundAnything=Site.nextPageCursor
+        end
+        local num = 0;
+        for i,v in pairs(Site.data) do
+            local Possible = true
+            ID=tostring(v.id)
+            if tonumber(v.maxPlayers)>tonumber(v.playing) then
+                for _,Existing in pairs(AllIDs) do
+                    if num ~=0 then
+                        if ID==tostring(Existing) then
+                            Possible=false
+                        end
+                    else
+                        if tonumber(actualHour) ~=tonumber(Existing) then
+                            local delFile = pcall(function()
+                                AllIDs={}
+                                table.insert(AllIDs, actualHour)
+                            end)
+                        end
+                    end
+                    num=num+1
+                end
+                if Possible==true then
+                    table.insert(AllIDs, ID)
+                    wait()
+                    pcall(function()
+                        wait()
+                        game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                    end)
+                    wait()
+                end
+            end
+        end
+    end
+
+    function Teleport() 
+        while wait() do
+            pcall(function()
+                TPReturner()
+                if foundAnything ~="" then
+                    TPReturner()
+                end
+            end)
+        end
+    end
+    Teleport()
+end
+if not game:IsLoaded() then game.Loaded:Wait() end
+
+local CoreGui = game:GetService("CoreGui")
+
+
+pcall(function()
+    for _, v in pairs(CoreGui:GetChildren()) do
+        if v:IsA("ScreenGui") and v.Name == "VxezeHubUI" then
+            v:Destroy()
+        end
+    end
+end)
+
+
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = CoreGui
+ScreenGui.Name = "VxezeHubUI"
+ScreenGui.IgnoreGuiInset = true
+
+
+local Frame = Instance.new("Frame")
+Frame.Parent = ScreenGui
+Frame.Size = UDim2.new(1, 0, 1, 0)
+Frame.Position = UDim2.new(0, 0, 0, 0)
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BackgroundTransparency = 0.3 
+Frame.ZIndex = 10
+
+
+local Title = Instance.new("TextLabel")
+Title.Parent = Frame
+Title.Size = UDim2.new(1, 0, 0.2, 0)
+Title.Position = UDim2.new(0, 0, 0.26, 0)
+Title.BackgroundTransparency = 1
+Title.Text = "Vxeze Hub"
+Title.TextColor3 = Color3.fromRGB(225, 222, 255)
+Title.TextScaled = true
+Title.Font = Enum.Font.FredokaOne
+Title.ZIndex = 11
+
+local Subtitle = Instance.new("TextLabel")
+Subtitle.Parent = Frame
+Subtitle.Size = UDim2.new(1, 0, 0.05, 0)
+Subtitle.Position = UDim2.new(0, 0, 0.45, 0)
+Subtitle.BackgroundTransparency = 1
+Subtitle.Text = "Reason: Vxeze Hub Hop Notify 💫"
+Subtitle.TextColor3 = Color3.fromRGB(127, 128, 123)
+Subtitle.TextScaled = true
+Subtitle.Font = Enum.Font.FredokaOne
+Subtitle.ZIndex = 10
+
+function script()
+Hop()
+end
+local Subtitle = Instance.new("TextLabel")
+Subtitle.Parent = Frame
+Subtitle.Size = UDim2.new(1, 0, 0.03, 0)
+Subtitle.Position = UDim2.new(0, 0, 0.52, 0)
+Subtitle.BackgroundTransparency = 1
+Subtitle.Text = "Hopping Server Wait"
+Subtitle.TextColor3 = Color3.fromRGB(127, 128, 123)
+Subtitle.TextScaled = true
+Subtitle.Font = Enum.Font.FredokaOne
+Subtitle.ZIndex = 11
+wait(1)
+Subtitle.Text = "Hopping Server: 3s"
+wait(1)
+Subtitle.Text = "Hopping Server: 2s"
+wait(1)
+Subtitle.Text = "Hopping Server: 1s"
+wait(1)
+script()
