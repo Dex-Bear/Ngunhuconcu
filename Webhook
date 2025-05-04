@@ -55,7 +55,7 @@ function Webhook:Send(Config)
 				{
 					title = "**" .. WebhookConfig.Title .. "**",
 					description = WebhookConfig.Description,
-					color = tonumber(65280),
+					color = tonumber(16777215),
 					timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ"),
 					fields = fields,
 					footer = {
